@@ -38,14 +38,17 @@ func modifyTask() {
 	for i := 0; i < len(tasks); i++ {
 		fmt.Println(i+1, tasks[i])
 	}
+	fmt.Print("Please enter task to modify: ")
 	var choice int
 	fmt.Scanln(&choice)
+	fmt.Print("Please enter name of new task: ")
 	var newTask string
 	fmt.Scanln(&newTask)
 
 	tasks[choice-1] = newTask
 }
 func addTask() {
+	fmt.Print("Please enter name of task: ")
 	scanner.Scan()
 	input := scanner.Text()
 	tasks = append(tasks, input)
@@ -55,9 +58,13 @@ func removeTask() {
 		fmt.Println(i+1, tasks[i])
 	}
 	var choice int
+	fmt.Println("Enter number of task to delete (-1 to delete ALL, 0 to return): ")
 	fmt.Scanln(&choice)
 	if choice == -1 {
 		tasks = tasks[:0]
+		return
+	} else if choice == 0 {
+		return
 	}
 	tasks = slices.Delete(tasks, choice-1, choice)
 }
