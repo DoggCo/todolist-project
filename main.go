@@ -9,7 +9,7 @@ import (
 )
 
 var tasks []string
-var scanner := bufio.NewScanner(os.Stdin)
+var scanner = bufio.NewScanner(os.Stdin)
 
 func clear() {
 	fmt.Print("\033[H\033[2J")
