@@ -5,9 +5,11 @@ import (
 	"os"
 	"slices"
 	"strings"
+	"bufio"
 )
 
 var tasks []string
+var scanner := bufio.NewScanner(os.Stdin)
 
 func clear() {
 	fmt.Print("\033[H\033[2J")
@@ -29,6 +31,8 @@ func viewTask() {
 	for i := 0; i < len(tasks); i++ {
 		fmt.Println(tasks[i])
 	}
+	fmt.Scanln()
+	clear()
 }
 func modifyTask() {
 	for i := 0; i < len(tasks); i++ {
@@ -42,9 +46,9 @@ func modifyTask() {
 	tasks[choice-1] = newTask
 }
 func addTask() {
-	var newTask string
-	fmt.Scanln(&newTask)
-	tasks = append(tasks, newTask)
+	scanner.Scan()
+	input := scanner.Text()
+	tasks = append(tasks, input)
 }
 func removeTask() {
 	for i := 0; i < len(tasks); i++ {
