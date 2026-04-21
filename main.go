@@ -7,6 +7,9 @@ import (
 	"strings"
 )
 
+func clear() {
+	fmt.Print("\033[H\033[2J")
+}
 func menu() int {
 	fmt.Print("Please select one of the options\n\n")
 	fmt.Println("1 - View tasks")
@@ -112,6 +115,8 @@ func main() {
 			os.Truncate("ez4ence.txt", 0)
 		case 0:
 			return
+		default:
+			fmt.Println("Invalid selection")
 		}
 	}
 }
