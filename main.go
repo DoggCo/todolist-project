@@ -83,14 +83,27 @@ func removeTask() {
 		fmt.Println("im on some bullllllshit")
 		return
 	}
+	var sure string
 	switch choice {
 	case -1:
-		tasks = tasks[:0]
-		return
+		fmt.Print("Are you sure? (y/n): ")
+		fmt.Scanln(&sure)
+		if sure == "y" {
+			tasks = tasks[:0]
+			return
+		} else {
+			return
+		}
 	case 0:
 		return
 	}
-	tasks = slices.Delete(tasks, choice-1, choice)
+	fmt.Print("Are you sure? (y/n): ")
+	fmt.Scanln(&sure)
+	if sure == "y" {
+		tasks = slices.Delete(tasks, choice-1, choice)
+	} else {
+		return
+	}
 }
 func save() {
 	content := strings.Join(tasks, "\n")
